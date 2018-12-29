@@ -9,7 +9,7 @@ const graphQLServer = new ApolloServer({ schema });
 
 graphQLServer.applyMiddleware({ app });
 
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.GRAPHQL_APP_PORT || 8000;
 app.listen(PORT, () =>
   console.log(
     cowsay.say({

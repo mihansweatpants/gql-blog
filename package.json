@@ -17,6 +17,7 @@
   "devDependencies": {
     "concurrently": "^4.1.0",
     "dotenv-webpack": "^1.5.7",
+    "nodemon": "^1.18.9",
     "webpack": "^4.28.2",
     "webpack-cli": "^3.1.2",
     "webpack-node-externals": "^1.7.2"

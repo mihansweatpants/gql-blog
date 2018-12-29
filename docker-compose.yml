@@ -1,0 +1,17 @@
+version: '3'
+services:
+  cheese-graphql-api:
+    container_name: ${CONTAINER_NAME}
+    build: .
+    expose:
+      - '8000'
+    ports:
+      - 8000:${GRAPHQL_APP_PORT}
+    user: node
+    volumes:
+      - '.:/app'
+    working_dir: '/app'
+    environment:
+      - NODE_ENV=${NODE_ENV}
+      - PORT=${GRAPHQL_APP_PORT}
+    tty: true
