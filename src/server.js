@@ -1,7 +1,7 @@
 import express from 'express';
 import { ApolloServer } from 'apollo-server-express';
-import boxen from 'boxen';
 import chalk from 'chalk';
+import cowsay from 'cowsay';
 import schema from '~/modules/schema';
 
 const app = express();
@@ -12,15 +12,10 @@ graphQLServer.applyMiddleware({ app });
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () =>
   console.log(
-    boxen(
-      `${chalk.magenta(
+    cowsay.say({
+      text: `${chalk.magenta(
         'GraphQL'
       )} server started at localhost:${PORT} \n GUI at http://localhost:${PORT}/graphql`,
-      {
-        padding: 2,
-        margin: 1,
-        borderColor: 'gray',
-      }
-    )
+    })
   )
 );

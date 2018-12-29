@@ -7,8 +7,8 @@
     "apollo-boost": "^0.1.23",
     "apollo-server-express": "^2.3.1",
     "body-parser": "^1.18.3",
-    "boxen": "^2.1.0",
     "chalk": "^2.4.1",
+    "cowsay": "^1.4.0",
     "express": "^4.16.4",
     "graphql": "^14.0.2",
     "graphql-import": "^0.7.1",
@@ -23,6 +23,6 @@
     "webpack-node-externals": "^1.7.2"
   },
   "scripts": {
-    "dev": "NODE_ENV=development concurrently -c yellow,magenta \"webpack --mode development\" \"if [ ! -f dist/bundle.js ]; then sleep 4; fi; nodemon dist\""
+    "dev": "NODE_ENV=development concurrently -n webpack,graphql -c yellow,magenta \"webpack --mode development\" \"if [ ! -f dist/bundle.js ]; then sleep 4; fi; nodemon dist\""
   }
 }
