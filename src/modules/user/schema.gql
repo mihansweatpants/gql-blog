@@ -1,0 +1,13 @@
+input userData {
+  email: String
+  username: String
+  password: String
+}
+
+type authResponse {
+  token: String
+}
+
+extend type Mutation {
+  signUp(input: userData!): authResponse!
+}
