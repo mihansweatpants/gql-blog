@@ -1,25 +1,15 @@
 import express from 'express';
 import { ApolloServer } from 'apollo-server-express';
-import Sequelize from 'sequelize';
 import chalk from 'chalk';
 import cowsay from 'cowsay';
+
 import schema from '~/modules/schema';
+import { sequelize, models } from './models';
 
 const app = express();
-const graphQLServer = new ApolloServer({ schema });
+const graphQLServer = new ApolloServer({ schema, context: { models } });
 
 graphQLServer.applyMiddleware({ app });
-
-const sequelize = new Sequelize(
-  process.env.DB_NAME,
-  process.env.DB_USER,
-  process.env.DB_PASSWORD,
-  {
-    dialect: 'postgres',
-    host: process.env.DB_HOST,
-    port: process.env.DB_PORT,
-  }
-);
 
 sequelize.sync().then(() => {
   const PORT = process.env.GRAPHQL_APP_PORT || 8000;

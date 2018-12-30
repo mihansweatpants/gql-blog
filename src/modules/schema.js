@@ -5,7 +5,7 @@ import rootSchema from './rootSchema.gql';
 const typeDefs = [rootSchema];
 
 const schemas = fs
-  .readdirSync('src/modules')
+  .readdirSync(__dirname)
   .filter(name => !name.includes('.'))
   .map(folder => {
     const resolvers = require(`~/modules/${folder}/resolvers`).default;

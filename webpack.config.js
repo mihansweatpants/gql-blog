@@ -12,6 +12,9 @@ if (isDev) {
 module.exports = {
   entry: ['./src/server.js'],
   target: 'node',
+  node: {
+    __dirname: true,
+  },
   watch: isDev,
   externals: [nodeExternals()],
   module: {
@@ -31,7 +34,8 @@ module.exports = {
     extensions: ['.mjs', '.js', '.json'],
     alias: {
       modules: path.resolve(__dirname, 'src/modules'),
-      helpers: path.resolve(__dirname, 'src/helpers/functions'),
+      helpers: path.resolve(__dirname, 'src/helpers'),
+      models: path.resolve(__dirname, 'src/models'),
       '~': path.resolve(__dirname, 'src'),
     },
   },
