@@ -2,10 +2,6 @@ const user = (sequelize, DataTypes) => {
   const User = sequelize.define(
     'user',
     {
-      id: {
-        type: DataTypes.INTEGER,
-        primaryKey: true,
-      },
       password: {
         type: DataTypes.STRING,
       },
