@@ -1,8 +1,8 @@
 input userData {
   email: String!
   username: String!
-  password: String
-  role: String!
+  password: String!
+  role: String
 }
 
 type authResponse {

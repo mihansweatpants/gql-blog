@@ -7,12 +7,19 @@ const user = (sequelize, DataTypes) => {
       },
       username: {
         type: DataTypes.STRING,
+        unique: true,
       },
       email: {
         type: DataTypes.STRING,
+        unique: true,
       },
       role: {
         type: DataTypes.STRING,
+        defaultValue: 'user',
+      },
+      created_at: {
+        type: DataTypes.DATE,
+        defaultValue: DataTypes.NOW,
       },
     },
     {

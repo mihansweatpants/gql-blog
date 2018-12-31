@@ -16,6 +16,7 @@ services:
     environment:
       - NODE_ENV=${NODE_ENV}
       - PORT=${GRAPHQL_APP_PORT}
+      - JWT_SECRET=${JWT_SECRET}
     tty: true
   
   postgres:
