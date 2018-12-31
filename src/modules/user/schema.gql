@@ -10,5 +10,6 @@ type authResponse {
 }
 
 extend type Mutation {
-  signUp(input: userData!): authResponse!
+  signup(input: userData!): authResponse!
+  login(input: userData!): authResponse!
 }
