@@ -1,5 +1,5 @@
 import bcrypt from 'bcryptjs';
-import jwt from 'jsonwebtoken';
+import { generateToken } from './user';
 
 export default {
   Mutation: {
@@ -10,13 +10,7 @@ export default {
           password: await bcrypt.hash(input.password, 10),
         });
 
-        const token = jwt.sign(
-          {
-            id: user.id,
-          },
-          process.env.JWT_SECRET,
-          { expiresIn: '1d' }
-        );
+        const token = generateToken({ id: user.id });
 
         return { token };
       } catch (err) {
@@ -43,13 +37,7 @@ export default {
           throw new Error('Incorrect password');
         }
 
-        const token = jwt.sign(
-          {
-            id: user.id,
-          },
-          process.env.JWT_SECRET,
-          { expiresIn: '1d' }
-        );
+        const token = generateToken({ id: user.id });
 
         return { token };
       } catch (err) {
