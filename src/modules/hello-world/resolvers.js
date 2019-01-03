@@ -2,9 +2,11 @@ import { AuthorizationError } from '~/helpers/auth';
 
 export default {
   Query: {
-    echo: (_, { text }, { checkAuth }) => {
+    echo: async (_, { text }, { checkAuth }) => {
       try {
-        const currentUser = checkAuth();
+        const currentUser = await checkAuth();
+
+        console.log(currentUser.username);
 
         return text || 'echo';
       } catch (err) {

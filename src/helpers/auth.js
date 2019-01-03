@@ -1,9 +1,7 @@
 import jwt from 'jsonwebtoken';
 
-const TOKEN_LIFETIME = '1d';
-
+const TOKEN_LIFETIME = 1000 * 60 * 60 * 24;
 const IS_SECURE = process.env.NODE_ENV === 'production';
-const COOKIE_LIFETIME = 1000 * 60 * 60 * 24;
 
 /**
  * @param {*} payload - any object
@@ -25,7 +23,7 @@ export function generateToken(payload) {
 export function setCookie(res, token) {
   res.cookie('token', token, {
     httpOnly: true,
-    maxAge: COOKIE_LIFETIME,
+    maxAge: TOKEN_LIFETIME,
     secure: IS_SECURE,
   });
 }
@@ -37,24 +35,22 @@ export function setCookie(res, token) {
 export async function checkAuth(req, User) {
   const token = req?.cookies?.token || req?.headers?.authorization;
 
-  console.log({ token });
+  if (!token) throw new Error('Unauthorized');
 
-  if (token) {
-    const { id } = jwt.verify(token, process.env.JWT_SECRET);
+  const { id } = jwt.verify(token, process.env.JWT_SECRET);
 
-    const user = await User.find({ where: id });
+  const user = await User.find({ where: id });
 
-    if (!user) throw new Error('Unauthorized');
+  if (!user) throw new Error('Invalid token');
 
-    return user;
-  }
+  return user;
 }
 
 export class AuthorizationError extends Error {
   constructor(...args) {
     super(...args);
-    this.name = "Authorization error";
+    this.name = 'Authorization error';
     this.code = 401;
-    Error.captureStackTrace(this, AuthorizationError)
+    Error.captureStackTrace(this, AuthorizationError);
   }
 }
