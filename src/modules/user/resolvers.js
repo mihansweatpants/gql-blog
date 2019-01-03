@@ -1,9 +1,9 @@
 import bcrypt from 'bcryptjs';
-import { generateToken } from './user';
+import { generateToken, setCookie } from './auth';
 
 export default {
   Mutation: {
-    signup: async (_, { input }, { models }) => {
+    signup: async (_, { input }, { models, res }) => {
       try {
         const user = await models.User.create({
           ...input,
@@ -11,14 +11,15 @@ export default {
         });
 
         const token = generateToken({ id: user.id });
+        setCookie(res, token);
 
-        return { token };
+        return true;
       } catch (err) {
         throw new Error(err);
       }
     },
 
-    login: async (_, { input }, { models }) => {
+    login: async (_, { input }, { models, res }) => {
       try {
         const user = await models.User.findOne({
           where: { username: input.username, email: input.email },
@@ -38,8 +39,9 @@ export default {
         }
 
         const token = generateToken({ id: user.id });
+        setCookie(res, token);
 
-        return { token };
+        return true;
       } catch (err) {
         throw new Error(err);
       }

@@ -5,11 +5,11 @@ input userData {
   role: String
 }
 
-type authResponse {
-  token: String
-}
+# type authResponse {
+#   token: String
+# }
 
 extend type Mutation {
-  signup(input: userData!): authResponse!
-  login(input: userData!): authResponse!
+  signup(input: userData!): Boolean
+  login(input: userData!): Boolean
 }

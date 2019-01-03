@@ -7,7 +7,10 @@ import schema from '~/modules/schema';
 import { sequelize, models } from '~/models';
 
 const app = express();
-const graphQLServer = new ApolloServer({ schema, context: { models } });
+const graphQLServer = new ApolloServer({
+  schema,
+  context: ({ res }) => ({ models, res }),
+});
 
 graphQLServer.applyMiddleware({ app });
 
