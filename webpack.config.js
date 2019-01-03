@@ -20,12 +20,13 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.js$/,
+        use: [{ loader: 'babel-loader' }],
+        exclude: /node_modules/,
+      },
+      {
         test: /\.(graphql|gql)$/,
-        use: [
-          {
-            loader: 'graphql-tag/loader',
-          },
-        ],
+        use: [{ loader: 'graphql-tag/loader' }],
         exclude: /node_modules/,
       },
     ],

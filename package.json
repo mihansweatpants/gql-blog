@@ -18,6 +18,9 @@
     "sequelize": "^4.42.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/plugin-proposal-optional-chaining": "^7.2.0",
+    "babel-loader": "^8.0.4",
     "concurrently": "^4.1.0",
     "dotenv-webpack": "^1.5.7",
     "nodemon": "^1.18.9",

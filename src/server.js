@@ -5,11 +5,16 @@ import cowsay from 'cowsay';
 
 import schema from '~/modules/schema';
 import { sequelize, models } from '~/models';
+import { checkAuth } from '~/helpers/auth';
 
 const app = express();
 const graphQLServer = new ApolloServer({
   schema,
-  context: ({ res }) => ({ models, res }),
+  context: ({ req, res }) => ({
+    models,
+    res,
+    checkAuth: () => checkAuth(req, models.User),
+  }),
 });
 
 graphQLServer.applyMiddleware({ app });

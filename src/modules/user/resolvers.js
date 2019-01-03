@@ -1,5 +1,5 @@
 import bcrypt from 'bcryptjs';
-import { generateToken, setCookie } from './auth';
+import { generateToken, setCookie } from '~/helpers/auth';
 
 export default {
   Mutation: {
@@ -13,7 +13,7 @@ export default {
         const token = generateToken({ id: user.id });
         setCookie(res, token);
 
-        return true;
+        return { token };
       } catch (err) {
         throw new Error(err);
       }
@@ -41,7 +41,7 @@ export default {
         const token = generateToken({ id: user.id });
         setCookie(res, token);
 
-        return true;
+        return { token };
       } catch (err) {
         throw new Error(err);
       }

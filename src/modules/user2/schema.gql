@@ -1,0 +1,3 @@
+extend type Query {
+  echo(text: String): String!
+}

@@ -1,17 +1,17 @@
-import { mergeSchemas, makeExecutableSchema } from 'graphql-tools';
+import { makeExecutableSchema } from 'graphql-tools';
 import fs from 'fs';
 import rootSchema from './rootSchema.gql';
 
-const typeDefs = [rootSchema];
+const modules = fs.readdirSync(__dirname).filter(name => !name.includes('.'));
 
-const schemas = fs
-  .readdirSync(__dirname)
-  .filter(name => !name.includes('.'))
-  .map(folder => {
-    const resolvers = require(`~/modules/${folder}/resolvers`).default;
-    typeDefs.push(require(`~/modules/${folder}/schema.gql`));
+const typeDefs = [
+  rootSchema,
+  ...modules.map(folder => require(`~/modules/${folder}/schema.gql`)),
+];
 
-    return makeExecutableSchema({ resolvers, typeDefs });
-  });
+const resolvers = Object.assign(
+  {},
+  ...modules.map(folder => require(`~/modules/${folder}/resolvers`).default)
+);
 
-export default mergeSchemas({ schemas });
+export default makeExecutableSchema({ typeDefs, resolvers });
