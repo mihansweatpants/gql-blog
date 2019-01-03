@@ -10,6 +10,7 @@ type User {
   username: String!
   password: String
   role: String
+  id: String
 }
 
 type AuthResponse {
@@ -18,6 +19,8 @@ type AuthResponse {
 
 extend type Query {
   me: User
+  users: [User]
+  user(id: String!): User
 }
 
 extend type Mutation {

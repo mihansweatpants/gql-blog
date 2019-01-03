@@ -6,6 +6,18 @@ export default {
     me: async (_, args, { checkAuth }) => {
       return await checkAuth();
     },
+
+    users: async (_, args, { models, checkAuth }) => {
+      await checkAuth();
+
+      return await models.User.findAll();
+    },
+
+    user: async (_, { id }, { models, checkAuth }) => {
+      await checkAuth();
+
+      return await models.User.findOne({ where: { id } });
+    }
   },
   Mutation: {
     signup: async (_, { input }, { models, res }) => {
