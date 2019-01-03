@@ -1,3 +1,7 @@
 extend type Query {
   echo(text: String): String!
 }
+
+extend type Mutation {
+  test: String!
+}

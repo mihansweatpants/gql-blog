@@ -1,13 +1,10 @@
 import bcrypt from 'bcryptjs';
-import { AuthenticationError } from 'apollo-server-express';
 import { generateToken, setCookie } from '~/helpers/auth';
 
 export default {
   Query: {
-    me: async (_, args, { models, checkAuth }) => {
-      const currUser = await checkAuth();
-
-      return currUser;
+    me: async (_, args, { checkAuth }) => {
+      return await checkAuth();
     },
   },
   Mutation: {

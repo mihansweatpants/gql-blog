@@ -9,8 +9,6 @@ const typeDefs = [
   ...modules.map(folder => require(`~/modules/${folder}/schema.gql`)),
 ];
 
-typeDefs.forEach(item => console.log(item))
-
 const resolvers = Object.assign(
   {},
   ...modules.map(folder => require(`~/modules/${folder}/resolvers`).default)

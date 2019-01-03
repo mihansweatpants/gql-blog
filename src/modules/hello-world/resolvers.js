@@ -7,5 +7,8 @@ export default {
 
       return text || 'echo';
     },
+    Mutation: {
+      test: () => 'test mutation',
+    },
   },
 };
