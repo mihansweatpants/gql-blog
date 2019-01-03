@@ -1,4 +1,5 @@
 import jwt from 'jsonwebtoken';
+import { AuthenticationError } from 'apollo-server-express';
 
 const TOKEN_LIFETIME = 1000 * 60 * 60 * 24;
 const IS_SECURE = process.env.NODE_ENV === 'production';
@@ -33,24 +34,19 @@ export function setCookie(res, token) {
  * @param {*} User - user model
  */
 export async function checkAuth(req, User) {
-  const token = req?.cookies?.token || req?.headers?.authorization;
+  try {
+    const token = req?.cookies?.token || req?.headers?.authorization;
 
-  if (!token) throw new Error('Unauthorized');
+    if (!token) throw new Error('Must Authenticate');
 
-  const { id } = jwt.verify(token, process.env.JWT_SECRET);
+    const { id } = jwt.verify(token, process.env.JWT_SECRET);
 
-  const user = await User.find({ where: id });
+    const user = await User.find({ where: id });
 
-  if (!user) throw new Error('Invalid token');
+    if (!user) throw new Error('Invalid token');
 
-  return user;
-}
-
-export class AuthorizationError extends Error {
-  constructor(...args) {
-    super(...args);
-    this.name = 'Authorization error';
-    this.code = 401;
-    Error.captureStackTrace(this, AuthorizationError);
+    return user;
+  } catch (err) {
+    throw new AuthenticationError(err.message);
   }
 }

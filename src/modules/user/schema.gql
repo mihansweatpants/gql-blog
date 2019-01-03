@@ -1,15 +1,26 @@
-input userData {
+input UserData {
   email: String!
   username: String!
   password: String!
   role: String
 }
 
-type authResponse {
+type User {
+  email: String!
+  username: String!
+  password: String
+  role: String
+}
+
+type AuthResponse {
   token: String
 }
 
+extend type Query {
+  me: User
+}
+
 extend type Mutation {
-  signup(input: userData!): authResponse
-  login(input: userData!): authResponse
+  signup(input: UserData!): AuthResponse
+  login(input: UserData!): AuthResponse
 }
