@@ -5,4 +5,9 @@ type Post {
   created_at: String!
   thumbnail: String
   description: String
+  user: User!
+}
+
+extend type Query {
+  posts: [Post]
 }

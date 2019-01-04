@@ -1,26 +1,29 @@
 import { models } from '~/models';
 
+const qwerty = '$2a$10$Nef2dWrjqseggnZjH9Vm5uNSGVlajWCKD3RDgMbSA9y5u5wPHGjEm';
+const admin = '$2a$10$.8xasUejB6/ruiJQdsRNvO/2vuC1YW.iDdshgq19x3iCdRh0tIQyK';
+
 export default async () => {
   return Promise.all([
     models.User.create({
       username: 'boris',
       email: 'boris@mail.net',
-      password: 'qwerty',
+      password: qwerty,
     }),
     models.User.create({
       username: 'borat',
       email: 'borat@internet.io',
-      password: 'qwerty',
+      password: qwerty,
     }),
     models.User.create({
       username: 'jimmy',
       email: 'jimmy@website.org',
-      password: 'qwerty',
+      password: qwerty,
     }),
     models.User.create({
       username: 'admin',
       email: 'admin@admin.com',
-      password: 'admin',
+      password: admin,
       role: 'admin',
     }),
     models.Post.create({

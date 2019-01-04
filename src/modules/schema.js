@@ -1,3 +1,4 @@
+import { merge } from 'lodash';
 import { makeExecutableSchema } from 'graphql-tools';
 import fs from 'fs';
 import rootSchema from './rootSchema.gql';
@@ -9,7 +10,7 @@ const typeDefs = [
   ...modules.map(folder => require(`~/modules/${folder}/schema.gql`)),
 ];
 
-const resolvers = Object.assign(
+const resolvers = merge(
   {},
   ...modules.map(folder => require(`~/modules/${folder}/resolvers`).default)
 );

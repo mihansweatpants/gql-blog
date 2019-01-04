@@ -17,7 +17,7 @@ export default {
       await checkAuth();
 
       return await models.User.findOne({ where: { id } });
-    }
+    },
   },
   Mutation: {
     signup: async (_, { input }, { models, res }) => {

@@ -12,8 +12,10 @@
     "cowsay": "^1.4.0",
     "express": "^4.16.4",
     "graphql": "^14.0.2",
+    "graphql-import": "^0.7.1",
     "graphql-tag": "^2.10.0",
     "jsonwebtoken": "^8.4.0",
+    "lodash": "^4.17.11",
     "pg": "^7.7.1",
     "sequelize": "^4.42.0"
   },
