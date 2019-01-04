@@ -1,9 +1,16 @@
 export default {
   Query: {
     posts: async (_, args, { models }) => {
-      const posts = await models.Post.findAll();
+      return await models.Post.findAll({
+        include: [models.User],
+      });
+    },
 
-      return posts;
+    post: async (_, { id }, { models }) => {
+      return await models.Post.findOne({
+        where: { id },
+        include: [models.User],
+      });
     },
   },
 };
