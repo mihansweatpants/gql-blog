@@ -1,0 +1,8 @@
+type Post {
+  title: String!
+  text: String!
+  url: String!
+  created_at: String!
+  thumbnail: String
+  description: String
+}

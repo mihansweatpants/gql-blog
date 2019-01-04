@@ -6,6 +6,7 @@ import cowsay from 'cowsay';
 import schema from '~/modules/schema';
 import { sequelize, models } from '~/models';
 import { checkAuth } from '~/helpers/auth';
+import seed from '~/helpers/seed';
 
 const app = express();
 const graphQLServer = new ApolloServer({
@@ -19,15 +20,18 @@ const graphQLServer = new ApolloServer({
 
 graphQLServer.applyMiddleware({ app });
 
-sequelize.sync().then(() => {
-  const PORT = process.env.GRAPHQL_APP_PORT || 8000;
-  app.listen(PORT, () =>
-    console.log(
-      cowsay.say({
-        text: `${chalk.magenta(
-          'GraphQL'
-        )} server started at localhost:${PORT} \n GUI at http://localhost:${PORT}/graphql`,
-      })
-    )
-  );
-});
+sequelize
+  .sync({ force: true })
+  .then(seed)
+  .then(() => {
+    const PORT = process.env.GRAPHQL_APP_PORT || 8000;
+    app.listen(PORT, () =>
+      console.log(
+        cowsay.say({
+          text: `${chalk.magenta(
+            'GraphQL'
+          )} server started at localhost:${PORT} \n GUI at http://localhost:${PORT}/graphql`,
+        })
+      )
+    );
+  });

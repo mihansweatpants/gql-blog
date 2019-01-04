@@ -14,12 +14,19 @@ const sequelize = new Sequelize(
 
 const models = {
   User: sequelize.import(path.resolve(__dirname, './user')),
+  Post: sequelize.import(path.resolve(__dirname, './post')),
+};
+
+for (const model of Object.values(models)) {
+  if ('associate' in model) {
+    model.associate(models);
+  }
 }
 
-Object.keys(models).forEach(key => {
-  if ('associate' in models[key]) {
-    models[key].associate(models);
-  }
-});
+// Object.keys(models).forEach(key => {
+//   if ('associate' in models[key]) {
+//     models[key].associate(models);
+//   }
+// });
 
 export { sequelize, models };
