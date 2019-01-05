@@ -8,9 +8,8 @@ input UserData {
 type User {
   email: String!
   username: String!
-  password: String
   role: String
-  id: String
+  id: ID!
 }
 
 type AuthResponse {
@@ -20,7 +19,7 @@ type AuthResponse {
 extend type Query {
   me: User
   users: [User]
-  user(id: String!): User
+  user(id: ID!): User
 }
 
 extend type Mutation {

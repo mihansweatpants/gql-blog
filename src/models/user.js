@@ -17,10 +17,6 @@ const user = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         defaultValue: 'user',
       },
-      created_at: {
-        type: DataTypes.DATE,
-        defaultValue: DataTypes.NOW,
-      },
     },
     {
       tableName: 'users',

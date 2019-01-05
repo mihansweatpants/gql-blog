@@ -1,15 +1,37 @@
 type Post {
-  id: String!
+  id: ID!
   title: String!
   text: String!
   url: String!
-  created_at: String!
   thumbnail: String
   description: String
   user: User!
+  createdAt: String!
+  updatedAt: String!
+}
+
+input PostData {
+  title: String!
+  text: String!
+  thumbnail: String
+  description: String
+}
+
+input UpdatePostData {
+  id: ID!
+  title: String!
+  text: String!
+  thumbnail: String
+  description: String
 }
 
 extend type Query {
   posts: [Post]
-  post(id: String!): Post
+  post(id: ID!): Post
+}
+
+extend type Mutation {
+  createPost(input: PostData): Post
+  deletePost(id: ID!): Boolean
+  updatePost(input: UpdatePostData): Post
 }
