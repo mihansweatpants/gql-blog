@@ -17,6 +17,9 @@ const user = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         defaultValue: 'user',
       },
+      avatar: {
+        type: DataTypes.STRING,
+      }
     },
     {
       tableName: 'users',
