@@ -3,6 +3,7 @@ input UserData {
   username: String!
   password: String!
   role: String
+  avatar: String
 }
 
 type User {
@@ -10,6 +11,7 @@ type User {
   username: String!
   role: String
   id: ID!
+  avatar: String
 }
 
 type AuthResponse {
