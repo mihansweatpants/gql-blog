@@ -16,7 +16,11 @@ const user = (sequelize, DataTypes) => {
       role: {
         type: DataTypes.STRING,
         defaultValue: 'user',
+        values: ['user', 'admin'],
       },
+      avatar: {
+        type: DataTypes.STRING,
+      }
     },
     {
       tableName: 'users',

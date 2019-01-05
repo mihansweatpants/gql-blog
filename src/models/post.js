@@ -6,7 +6,7 @@ const post = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
       },
       text: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(1000),
       },
       thumbnail: {
         type: DataTypes.STRING,
