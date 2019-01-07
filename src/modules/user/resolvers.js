@@ -39,7 +39,7 @@ export default {
     login: async (_, { input }, { models, res }) => {
       try {
         const user = await models.User.findOne({
-          where: { username: input.username, email: input.email },
+          where: { username: input.username },
         });
 
         if (!user) {
@@ -56,7 +56,11 @@ export default {
         }
 
         const token = generateToken({ id: user.id });
-        setCookie(res, token);
+        // setCookie(res, token);
+        res.cookie('token', token, {
+          httpOnly: true,
+          maxAge: 1000 * 60 * 60 * 24,
+        });
 
         return { token };
       } catch (err) {

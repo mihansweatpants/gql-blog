@@ -9,6 +9,7 @@ import { checkAuth } from '~/helpers/auth';
 import seed from '~/helpers/seed';
 
 const app = express();
+
 const graphQLServer = new ApolloServer({
   schema,
   context: ({ req, res }) => ({

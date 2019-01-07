@@ -1,5 +1,5 @@
 input UserData {
-  email: String!
+  email: String
   username: String!
   password: String!
   role: String

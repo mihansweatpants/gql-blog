@@ -1,5 +1,5 @@
 {
-  "name": "graphql-cheese-network",
+  "name": "my-first-graphql-server",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
@@ -9,6 +9,8 @@
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
     "chalk": "^2.4.1",
+    "cookie-parser": "^1.4.3",
+    "cors": "^2.8.5",
     "cowsay": "^1.4.0",
     "express": "^4.16.4",
     "graphql": "^14.0.2",

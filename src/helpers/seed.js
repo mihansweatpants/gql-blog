@@ -9,7 +9,8 @@ export default async () => {
       username: 'boris',
       email: 'boris@mail.net',
       password: qwerty,
-      avatar: 'https://miro.medium.com/fit/c/240/240/0*FaZIYVp_tQRz-gG4',
+      avatar:
+        'https://pp.userapi.com/c846522/v846522836/16a782/y8AbSC3JhYs.jpg?ava=1',
     }),
     models.User.create({
       username: 'borat',
@@ -56,9 +57,9 @@ export default async () => {
     }),
   ]).then(([boris, borat, jimmy, admin, post1, post2, post3]) =>
     Promise.all([
-      post1.setUser(jimmy),
+      post1.setUser(boris),
       post2.setUser(boris),
-      post3.setUser(boris),
+      post3.setUser(jimmy),
     ])
   );
 };
