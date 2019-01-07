@@ -8,7 +8,11 @@ import { sequelize, models } from '~/models';
 import { checkAuth } from '~/helpers/auth';
 import seed from '~/helpers/seed';
 
+import oauth from '~/oauth';
+
 const app = express();
+
+app.use('/oauth', oauth);
 
 const graphQLServer = new ApolloServer({
   schema,

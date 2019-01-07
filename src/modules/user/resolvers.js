@@ -56,11 +56,7 @@ export default {
         }
 
         const token = generateToken({ id: user.id });
-        // setCookie(res, token);
-        res.cookie('token', token, {
-          httpOnly: true,
-          maxAge: 1000 * 60 * 60 * 24,
-        });
+        setCookie(res, token);
 
         return { token };
       } catch (err) {
