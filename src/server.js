@@ -1,5 +1,6 @@
 import express from 'express';
 import { ApolloServer } from 'apollo-server-express';
+import cors from 'cors';
 import chalk from 'chalk';
 import cowsay from 'cowsay';
 
@@ -12,6 +13,7 @@ import oauth from '~/oauth';
 
 const app = express();
 
+app.use(cors());
 app.use('/oauth', oauth);
 
 const graphQLServer = new ApolloServer({
