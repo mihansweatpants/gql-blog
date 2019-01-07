@@ -62,7 +62,7 @@ router.get(
 router.get('/:reqId', (req, res) => {
   if (req.params.reqId === reqId) {
     res.status(200).json({
-      token: generateToken(userId),
+      token: generateToken({ id: userId }),
     });
   } else {
     res.status(404).json({
