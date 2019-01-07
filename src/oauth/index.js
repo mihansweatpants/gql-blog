@@ -55,7 +55,7 @@ router.get(
   '/google/callback',
   passport.authenticate('google', { session: false }),
   (req, res) => {
-    res.redirect(`${process.env.FRONTEND_URL}/oauth/req_id?=${reqId}`);
+    res.redirect(`${process.env.FRONTEND_URL}/oauth/?req_id=${reqId}`);
   }
 );
 
