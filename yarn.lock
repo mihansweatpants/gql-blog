@@ -3521,6 +3521,15 @@ passport-google-oauth20@^1.0.0:
   dependencies:
     passport-oauth2 "1.x.x"
 
+passport-oauth2@1.3.x:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/passport-oauth2/-/passport-oauth2-1.3.0.tgz#d72b4bd62eeb807a4089ff3071a22c26c382dc0c"
+  integrity sha1-1ytL1i7rgHpAif8wcaIsJsOC3Aw=
+  dependencies:
+    oauth "0.9.x"
+    passport-strategy "1.x.x"
+    uid2 "0.0.x"
+
 passport-oauth2@1.x.x:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/passport-oauth2/-/passport-oauth2-1.4.0.tgz#f62f81583cbe12609be7ce6f160b9395a27b86ad"
@@ -3535,6 +3544,14 @@ passport-strategy@1.x.x:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/passport-strategy/-/passport-strategy-1.0.0.tgz#b5539aa8fc225a3d1ad179476ddf236b440f52e4"
   integrity sha1-tVOaqPwiWj0a0XlHbd8ja0QPUuQ=
+
+passport-vkontakte@^0.3.2:
+  version "0.3.2"
+  resolved "https://registry.yarnpkg.com/passport-vkontakte/-/passport-vkontakte-0.3.2.tgz#a2a75af96466936b375fca958fd57bc10e1fea92"
+  integrity sha1-oqda+WRmk2s3X8qVj9V7wQ4f6pI=
+  dependencies:
+    passport-oauth2 "1.3.x"
+    pkginfo "0.2.x"
 
 passport@^0.4.0:
   version "0.4.0"
@@ -3658,6 +3675,11 @@ pkg-dir@^3.0.0:
   integrity sha512-/E57AYkoeQ25qkxMj5PBOVgF8Kiu/h7cYS30Z5+R7WaiCCBfLq58ZI/dSeaEKb9WVJV5n/03QwrN3IeWIFllvw==
   dependencies:
     find-up "^3.0.0"
+
+pkginfo@0.2.x:
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/pkginfo/-/pkginfo-0.2.3.tgz#7239c42a5ef6c30b8f328439d9b9ff71042490f8"
+  integrity sha1-cjnEKl72wwuPMoQ52bn/cQQkkPg=
 
 posix-character-classes@^0.1.0:
   version "0.1.1"

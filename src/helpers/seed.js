@@ -6,21 +6,19 @@ const admin = '$2a$10$.8xasUejB6/ruiJQdsRNvO/2vuC1YW.iDdshgq19x3iCdRh0tIQyK';
 export default async () => {
   return Promise.all([
     models.User.create({
-      username: 'boris',
-      email: 'boris@mail.net',
-      password: qwerty,
-      avatar:
-        'https://pp.userapi.com/c846522/v846522836/16a782/y8AbSC3JhYs.jpg?ava=1',
-    }),
-    models.User.create({
-      username: 'borat',
-      email: 'borat@internet.io',
+      username: 'User 123',
+      email: 'user@mail.net',
       password: qwerty,
       avatar:
         'https://miro.medium.com/fit/c/80/80/1*NwS9KzJzWwwTQiYSOs_56g.jpeg',
     }),
     models.User.create({
-      username: 'jimmy',
+      username: 'borat',
+      email: 'borat@internet.io',
+      password: qwerty,
+    }),
+    models.User.create({
+      username: 'jimm_jimm_jimmells',
       email: 'jimmy@website.org',
       password: qwerty,
       avatar:
