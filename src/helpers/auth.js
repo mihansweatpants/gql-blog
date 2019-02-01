@@ -41,7 +41,7 @@ export async function checkAuth(req, User) {
 
     const { id } = jwt.verify(token, process.env.JWT_SECRET);
 
-    const user = await User.find({ where: id });
+    const user = await User.findOne({ where: id });
 
     if (!user) throw new Error('Invalid token');
 
@@ -49,4 +49,31 @@ export async function checkAuth(req, User) {
   } catch (err) {
     throw new AuthenticationError(err.message);
   }
+}
+
+/**
+ * @param {number} length - length of generated string (defaults to 20 chars)
+ */
+export function generateNonce(length = 20) {
+  return [...Array(length)]
+    .map(i => (~~(Math.random() * 36)).toString(36))
+    .join('');
+}
+
+/**
+ * @param {*} User - user model
+ * @param {{ email: string, username: string, avatar: string }} params - fileds on User instance
+ */
+export async function findOrCreateOauthUser(User, { email, username, avatar }) {
+  let user = await User.findOne({ where: { username } });
+
+  if (!user) {
+    user = await User.create({
+      email,
+      username,
+      avatar,
+    });
+  }
+
+  return user;
 }
